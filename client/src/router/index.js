@@ -40,8 +40,6 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('Vamos para ', to);
-  console.log('Estoy en ', from);
   if (to.matched.some((route) => route.meta.requiresAuth)) {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.accessToken) {

@@ -13,7 +13,6 @@ export const userLogin = async function userLogin(userData) {
   return new Promise((resolve) => {
     if (data.accessToken) {
       localStorage.setItem('user', JSON.stringify(data));
-      console.log(`Llamada completa => user ${data}`);
       resolve(true);
     }
 

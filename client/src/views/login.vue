@@ -51,14 +51,12 @@ export default {
     async onSubmit(event) {
       event.preventDefault();
       if (await userLogin(this.form)) {
-        // this.$swal('Good job!', 'Submmit', 'success');
-        Swal.fire('Oops...', 'Something went wrong!', 'error');
-        console.log('Calling about');
+        const userData = JSON.parse(localStorage.getItem('user'));
+        Swal.fire(`Good job! ${userData.user.name}`, 'You are ready to start!', 'success');
         this.$router.push('/about').catch((err) => { console.log(err); });
+      } else {
+        Swal.fire('No existes!', 'You aren´t ready to start!', 'error');
       }
-    },
-    alert() {
-      this.$swal('Good job!', 'You are ready to start!', 'success');
     },
     onReset(event) {
       event.preventDefault();
