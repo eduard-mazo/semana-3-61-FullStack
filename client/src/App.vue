@@ -1,20 +1,16 @@
 <template>
   <div id="app">
-    <login></login>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import login from './components/login.vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: 'App',
-  components: {
-    login
-  }
-}
+};
 </script>
 
 <style>
