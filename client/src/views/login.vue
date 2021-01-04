@@ -52,7 +52,8 @@ export default {
       event.preventDefault();
       if (await userLogin(this.form)) {
         const userData = JSON.parse(localStorage.getItem('user'));
-        Swal.fire(`Good job! ${userData.user.name}`, 'You are ready to start!', 'success');
+        Swal.fire(`Good job! ${userData.user.nombre}`, 'You are ready to start!', 'success');
+        console.log('her');
         this.$router.push('/about').catch((err) => { console.log(err); });
       } else {
         Swal.fire('No existes!', 'You aren´t ready to start!', 'error');

@@ -7,11 +7,11 @@ export const userLogin = async function userLogin(userData) {
     body: JSON.stringify(userData),
   };
 
-  const res = await fetch('http://localhost:3000/api/auth/signin', reqOptions);
+  const res = await fetch('http://localhost:3000/api/usuario/login', reqOptions);
   const data = await res.json();
 
   return new Promise((resolve) => {
-    if (data.accessToken) {
+    if (data.token) {
       localStorage.setItem('user', JSON.stringify(data));
       resolve(true);
     }
@@ -25,6 +25,22 @@ export const logOut = function logout() {
   localStorage.removeItem('user');
 };
 
-export const eduard = function getAll() {
-  return authHeader();
+export const addUser = async function addUser(userData) {
+  const reqOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', token: authHeader() },
+    body: JSON.stringify(userData),
+  };
+
+  const res = await fetch('http://localhost:3000/api/usuario/add', reqOptions);
+  const data = await res.json();
+
+  return new Promise((resolve) => {
+    if (data.accessToken) {
+      localStorage.setItem('user', JSON.stringify(data));
+      resolve(true);
+    }
+
+    resolve(false);
+  });
 };

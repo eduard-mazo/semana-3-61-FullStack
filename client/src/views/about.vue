@@ -12,10 +12,14 @@
       b-button(
         variant='primary'
         @click='signOut()') Log Out
+      |
+      b-button(
+        variant='primary'
+        @click='newUser()') Agregar
 </template>
 
 <script>
-import { logOut } from '../services/user.service';
+import { logOut, addUser } from '../services/user.service';
 
 export default {
   data() {
@@ -35,6 +39,15 @@ export default {
     signOut() {
       logOut();
       this.$router.push('/login').catch((err) => { console.log(err); });
+    },
+    newUser() {
+      addUser({
+        rol: 'Administrador',
+        nombre: 'Nombre_prueba',
+        password: '123',
+        email: 'prueba3@gmail.com',
+        estado: 1,
+      });
     },
   },
 };
